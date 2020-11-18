@@ -1,0 +1,172 @@
+schema: kata.ai/schema/kata-ml/1.0
+name: test-02
+desc: My First Bot
+flows:
+    hello:
+        fallback: true
+        intents:
+            intent_start:
+                type: text
+                initial: true
+                condition: content == "/start"
+            intent_help:
+                type: text
+                initial: true
+                condition: content == "/help" || content == "/about"
+            intent_joke:
+                type: text
+                initial: true
+                condition: content == "/joke"
+            intent_command:
+                initial: true
+                attributes:
+                    command:
+                        nlu: nlu_commands
+                        path: command
+                    sentence:
+                        nlu: nlu_commands
+                        path: sentence
+            others:
+                initial: true
+                attributes:
+                    sentence:
+                        nlu: others
+            fallback:
+                fallback: true
+            reenter:
+                type: command
+                condition: content == "reenter"
+        states:
+            init:
+                initial: true
+                transitions:
+                    state_opening_bot:
+                        condition: intent == 'intent_start'
+                    state_help:
+                        condition: intent == 'intent_help'
+                    state_joke:
+                        condition: intent == "intent_joke"
+                    state_info:
+                        condition: intent == "intent_command" && attributes.command == 'info'
+                        mapping:
+                            context.sentence: attributes.sentence
+                            context.command: attributes.command
+                    state_ask:
+                        condition: intent == "intent_command" && attributes.command == 'ask'
+                        mapping:
+                            context.sentence: attributes.sentence
+                            context.command: attributes.command
+                    state_ask_fallback:
+                        condition: type == "text"
+                    getAnswer:
+                        condition: intent == "question"
+                        mapping:
+                            context.question: content
+            state_opening_bot:
+                end: true
+                action:
+                    -
+                        name: print_welcome
+                    -
+                        name: print_about
+            state_help:
+                end: true
+                action:
+                    name: print_about
+            state_joke:
+                end: true
+                action:
+                    -
+                        name: get_joke
+                    -
+                        name: print_joke
+            state_info:
+                end: true
+                action:
+                    name: text
+                    options:
+                        text:
+                            - 'Hi, currently there is no info about $(context.sentence)'
+            state_ask_fallback:
+                end: true
+                action:
+                    -
+                        name: get_joke
+                    -
+                        name: print_joke
+            state_ask:
+                end: true
+                action:
+                    -
+                        name: print_sentence
+                    -
+                        name: get_joke
+                    -
+                        name: print_joke
+            other:
+                end: true
+                action:
+                    name: text
+                    options:
+                        text: sorry!
+        actions:
+            get_joke:
+                type: api
+                options:
+                    method: GET
+                    uri: 'https://official-joke-api.appspot.com/jokes/programming/random'
+            get_eli5:
+                type: api
+                options:
+                    method: POST
+                    body:
+                        question: $(context.question)
+                    uri: 'http://uncool.ai:8000/ask/'
+            print_joke:
+                type: text
+                options:
+                    text: '$(result[0].setup) $(result[0].punchline)'
+            print_eli5:
+                type: text
+                options:
+                    text: 'Answer: $(result.answer)'
+            print_content:
+                type: text
+                options:
+                    text: 'Content: $(content)'
+            print_welcome:
+                type: text
+                options:
+                    text: Welcome to Ask Me about Anything Bot
+            print_about:
+                type: text
+                options:
+                    text:
+                        - >-
+                            You can ask me everything such as following: "How far is the sun from earth?" or "Why do we fall in love?". Author:
+                            @CahyaWirawan'
+            print_sentence:
+                type: text
+                options:
+                    text: 'Question: $(context.sentence)'
+            greeting:
+                type: text
+                options:
+                    text: ' '
+            back:
+                type: command
+                command: intent_start
+nlus:
+    nlu_commands:
+        type: regex
+        options:
+            regex: '/([a-z]+) +(.*)'
+            index:
+                command: 1
+                sentence: 2
+    others:
+        type: regex
+        options:
+            regex: '^[a-z](.+)'
+            index: 1
+tag: null
