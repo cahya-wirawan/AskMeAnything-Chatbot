@@ -58,6 +58,8 @@ flows:
                             context.command: attributes.command
                     state_ask_fallback:
                         condition: type == "text"
+                        mapping:
+                            context.sentence: content
                     getAnswer:
                         condition: intent == "question"
                         mapping:
@@ -91,18 +93,16 @@ flows:
                 end: true
                 action:
                     -
-                        name: get_joke
+                        name: get_eli5
                     -
-                        name: print_joke
+                        name: print_eli5
             state_ask:
                 end: true
                 action:
                     -
-                        name: print_sentence
+                        name: get_eli5
                     -
-                        name: get_joke
-                    -
-                        name: print_joke
+                        name: print_eli5
             other:
                 end: true
                 action:
@@ -120,7 +120,7 @@ flows:
                 options:
                     method: POST
                     body:
-                        question: $(context.question)
+                        question: $(context.sentence)
                     uri: 'http://uncool.ai:8000/ask/'
             print_joke:
                 type: text
@@ -129,7 +129,7 @@ flows:
             print_eli5:
                 type: text
                 options:
-                    text: 'Answer: $(result.answer)'
+                    text: $(result.answer)
             print_content:
                 type: text
                 options:
@@ -137,14 +137,14 @@ flows:
             print_welcome:
                 type: text
                 options:
-                    text: Welcome to Ask Me about Anything Bot
+                    text: Welcome to Ask Me about Anything Bot (version 0.0.14)
             print_about:
                 type: text
                 options:
                     text:
                         - >-
                             You can ask me everything such as following: "How far is the sun from earth?" or "Why do we fall in love?". Author:
-                            @CahyaWirawan'
+                            @CahyaWirawan
             print_sentence:
                 type: text
                 options:
@@ -160,10 +160,10 @@ nlus:
     nlu_commands:
         type: regex
         options:
-            regex: '/([a-z]+) +(.*)'
+            regex: '/([a-zA-Z]+)(@[a-zA-Z]+)? +(.*)'
             index:
                 command: 1
-                sentence: 2
+                sentence: 3
     others:
         type: regex
         options:
