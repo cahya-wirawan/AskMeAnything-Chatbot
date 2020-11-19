@@ -33,9 +33,13 @@ It is running on kata.ai server infrastructure which works as the frontend and "
 (Telegram in this case) and the Chatbot's ODLFQA Engine
 ### Chatbot's ODLFQA Engine
 The engine has been dockerized and available at https://hub.docker.com/repository/docker/wirawan/eli5.
-The usage: `docker run --gpus all -p 8000:8000 wirawan/eli5`. It will run the engine on port 8000 and 
-provide Rest API interface on `http://<hostname>:8000/ask/` and its documentation: 
-`http://<hostname>:8000/docs/`. We will use this URL address `http://<hostname>:8000/ask/` in chatbot 
+
+Usage: `docker run --gpus all -p 8000:8000 wirawan/eli5`. 
+
+It will run the engine on port 8000 and provide Rest API interface on `http://<hostname>:8000/ask/` and its documentation: 
+`http://<hostname>:8000/docs/`. 
+
+We will use this URL address `http://<hostname>:8000/ask/` in chatbot 
 config file bot.yml in the action `get_eli5`.
 The first time we run `docker run --gpus all -p 8000:8000 wirawan/eli5`, it will download all necessary 
 files and datasets, and prepare it for the usage. This will take more than 2 hours depend on your 
