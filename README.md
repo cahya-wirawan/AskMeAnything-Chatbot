@@ -46,4 +46,9 @@ files and datasets, and prepare it for the usage. This will take more than 2 hou
 network and server performance. This long process will run only once. All processed files are saved 
 in /root/.cache, and it will be used for the following run.
 
+#### Server requirement
+- a Windows/Linux server with docker
+- NVidia GPU (16GB RAM)
+
+
 
