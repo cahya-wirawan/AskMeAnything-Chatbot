@@ -34,7 +34,7 @@ It is running on kata.ai server infrastructure which works as the frontend and "
 ### Chatbot's ODLFQA Engine
 The engine has been dockerized and available at https://hub.docker.com/repository/docker/wirawan/eli5.
 
-Usage: `docker run --gpus all -p 8000:8000 wirawan/eli5`. 
+Usage: `docker run --gpus all -p 8000:8000 -v /eli5/.cache:/root/.cache wirawan/eli5`. 
 
 It will run the engine on port 8000 and provide Rest API interface on `http://<hostname>:8000/ask/` and its documentation: 
 `http://<hostname>:8000/docs/`. 
@@ -44,7 +44,7 @@ config file bot.yml in the action `get_eli5`.
 The first time we run `docker run --gpus all -p 8000:8000 -v /eli5/.cache:/root/.cache wirawan/eli5`, 
 it will download all necessary models and datasets, and prepare it for the inferencing. This will take more 
 than 2 hours depend on your network and server performance. This long process will run only once. All 
-processed files are saved in local file system /eli5/.cache, so we can use it for the following run without 
+processed files are saved in local host file system /eli5/.cache, so we can use it for the following run without 
 long pre-processing time.
 
 #### Server requirement
