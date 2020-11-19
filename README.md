@@ -41,13 +41,14 @@ It will run the engine on port 8000 and provide Rest API interface on `http://<h
 
 We will use this URL address `http://<hostname>:8000/ask/` in chatbot 
 config file bot.yml in the action `get_eli5`.
-The first time we run `docker run --gpus all -p 8000:8000 wirawan/eli5`, it will download all necessary 
-files and datasets, and prepare it for the usage. This will take more than 2 hours depend on your 
-network and server performance. This long process will run only once. All processed files are saved 
-in /root/.cache, and it will be used for the following run.
+The first time we run `docker run --gpus all -p 8000:8000 -v /eli5/.cache:/root/.cache wirawan/eli5`, 
+it will download all necessary models and datasets, and prepare it for the inferencing. This will take more 
+than 2 hours depend on your network and server performance. This long process will run only once. All 
+processed files are saved in local file system /eli5/.cache, so we can use it for the following run without 
+long pre-processing time.
 
 #### Server requirement
-- a Windows/Linux server with docker
+- a Windows/Linux server with docker, 100GB Disk space and 16GB RAM
 - NVidia GPU (16GB RAM)
 
 
