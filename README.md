@@ -28,6 +28,7 @@ available now:
   Ask a question, example: /ask how old is the universe?
   If you talk with the chatbot using private message, you can ask a question without the /ask command
 - /joke
+
   Just give a random joke available on internet for entertainment.
   
 ## Architecture
