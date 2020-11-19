@@ -137,7 +137,7 @@ flows:
             print_welcome:
                 type: text
                 options:
-                    text: Welcome to Ask Me about Anything Bot (version 0.0.14)
+                    text: Welcome to Ask Me about Anything Bot (version 0.0.15)
             print_about:
                 type: text
                 options:
