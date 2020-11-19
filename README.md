@@ -11,6 +11,9 @@ summary of the relevant elements. The engine uses various advanced techniques su
 language models (e.g. BART, T5) for conditional text generation and a new method for finding 
 information in large data sources (such as Wikipedia) using the REALM, DPR or RAG model.
 
+Big thanks to [Yacine Jernite](https://yjernite.github.io/) from Huggingface who provides the code for "Open Domain Long Form Question and Answering"
+as [jupyter notebook](https://yjernite.github.io/lfqa.html).
+
 ## Chatbot's Usage
 Currently the Chatbot is available on Telegram messenger as @UncoolAIBot. Following chatbot's commands are
 available now:
