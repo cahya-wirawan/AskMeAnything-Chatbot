@@ -26,6 +26,16 @@ flows:
                     sentence:
                         nlu: nlu_commands
                         path: sentence
+            intent_join:
+                type: data
+                initial: true
+                fallback: false
+                condition: payload.message.new_chat_member
+            intent_left:
+                type: data
+                initial: true
+                fallback: false
+                condition: payload.message.left_chat_member
             others:
                 initial: true
                 attributes:
@@ -60,6 +70,10 @@ flows:
                         condition: type == "text"
                         mapping:
                             context.sentence: content
+                    state_join:
+                        condition: intent == 'intent_join'
+                    state_left:
+                        condition: intent == 'intent_left'
                     getAnswer:
                         condition: intent == "question"
                         mapping:
@@ -89,6 +103,20 @@ flows:
                     options:
                         text:
                             - 'Hi, currently there is no info about $(context.sentence)'
+            state_join:
+                end: true
+                action:
+                    name: text
+                    options:
+                        text:
+                            - Welcome!
+            state_left:
+                end: true
+                action:
+                    name: text
+                    options:
+                        text:
+                            - Bye!
             state_ask_fallback:
                 end: true
                 action:
@@ -137,7 +165,7 @@ flows:
             print_welcome:
                 type: text
                 options:
-                    text: Welcome to Ask Me about Anything Bot (version 0.0.16)
+                    text: Welcome to Ask Me about Anything Bot (version 0.0.17)
             print_about:
                 type: text
                 options:
