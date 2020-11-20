@@ -64,5 +64,9 @@ long pre-processing time.
 - a Windows/Linux server with docker, 100GB Disk space and 16GB RAM
 - NVidia GPU (16GB RAM)
 
+## Warning
+The current implementation uses English Wikipedia as data source and the model was pretrained also with Reddit dataset. 
+Therefore it has bias due to its dataset and can give ugly or politically incorrect answer 
+for some questions.
 
 
