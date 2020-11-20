@@ -27,6 +27,7 @@ available now:
 - /ask <question>
 
   Ask a question, example: /ask how old is the universe?
+  
   If you talk with the chatbot using private message, you can ask a question without the /ask command
 - /joke
 
