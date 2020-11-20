@@ -15,7 +15,8 @@ Big thanks to [Yacine Jernite](https://yjernite.github.io/) from Huggingface who
 as [jupyter notebook](https://yjernite.github.io/lfqa.html).
 
 ## Chatbot's Usage
-Currently the Chatbot is available on Telegram messenger as [@UncoolAIBot](https://t.me/UncoolAIBot). Following chatbot's commands are
+Currently the Chatbot is available on Telegram messenger as [@UncoolAIBot](https://t.me/UncoolAIBot) 
+or you can join the Telegram group [AMAPlanet](https://t.me/AMAPlanet). Following chatbot's commands are
 available now:
 - /start
 
