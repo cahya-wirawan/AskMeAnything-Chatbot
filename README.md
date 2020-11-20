@@ -39,10 +39,14 @@ It is running on kata.ai server infrastructure which works as the frontend and "
 The engine has been dockerized and available at https://hub.docker.com/repository/docker/wirawan/eli5.
 
 #### Docker Usage
-Create a directory /eli5/.cache before you run the docker for the first time,
-It needs around 25GB disk space and run:
+- Create a directory /eli5/.cache (or another directory where you have access) before you run the docker for the first time,
+It needs around 25GB disk space:
  
-`docker run --gpus all -p 8000:8000 -v /eli5/.cache:/root/.cache wirawan/eli5`. 
+  `% mkdir -p /eli5/.cache`
+ 
+- run the docker image **wirawan/eli5**:
+ 
+  `% docker run --gpus all -p 8000:8000 -v /eli5/.cache:/root/.cache wirawan/eli5`. 
 
 It will run the engine on port 8000 and provide Rest API interface on `http://<hostname>:8000/ask/` and its documentation: 
 `http://<hostname>:8000/docs/`. 
