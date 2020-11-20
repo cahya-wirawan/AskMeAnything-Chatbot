@@ -9,7 +9,7 @@ The chatbot's ODLFQA engine gathers relevant information from a variety of sourc
 relevant Wikipedia pages), synthesizes the information, and creates an easy-to-read original 
 summary of the relevant elements. The engine uses various advanced techniques such as pre-trained 
 language models (e.g. BART, T5) for conditional text generation and a new method for finding 
-information in large data sources (such as Wikipedia) using the REALM, DPR or RAG model.
+information in large data sources (such as Wikipedia) using the REALM or DPR model.
 
 Big thanks to [Yacine Jernite](https://yjernite.github.io/) from Huggingface who provides the code for "Open Domain Long Form Question and Answering"
 as [jupyter notebook](https://yjernite.github.io/lfqa.html).
