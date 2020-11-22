@@ -6,7 +6,6 @@ a user (e.g. a child or a student) can ask anything and the chatbot engine can g
 The first version has been developed for [Kata.ai](https://kata.ai/platform) chatbot framework. 
 Another frameworks (Rasa or DeepPavlov) will be tested.
 
-
 The chatbot's ODLFQA engine gathers relevant information from a variety of sources (e.g. paragraphs from 
 relevant Wikipedia pages), synthesizes the information, and creates an easy-to-read original 
 summary of the relevant elements. The engine uses various advanced techniques such as pre-trained 
