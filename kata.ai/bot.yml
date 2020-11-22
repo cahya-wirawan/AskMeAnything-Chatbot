@@ -150,8 +150,8 @@ flows:
                     body:
                         question: $(context.sentence)
                     headers:
-                        Authorization: Basic YW1hOjRza00zNG55dGhpbmc=
-                    uri: 'http://ama1.uncool.ai/ask/'
+                        Authorization: Basic #YourUserAuthentication
+                    uri: 'http://test.uncool.ai:8000/ask/'
             print_joke:
                 type: text
                 options:
