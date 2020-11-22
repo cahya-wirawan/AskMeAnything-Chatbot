@@ -149,7 +149,9 @@ flows:
                     method: POST
                     body:
                         question: $(context.sentence)
-                    uri: 'http://test.uncool.ai:8000/ask/'
+                    headers:
+                        Authorization: Basic YW1hOjRza00zNG55dGhpbmc=
+                    uri: 'http://ama1.uncool.ai/ask/'
             print_joke:
                 type: text
                 options:
@@ -165,7 +167,7 @@ flows:
             print_welcome:
                 type: text
                 options:
-                    text: Welcome to Ask Me about Anything Bot (version 0.0.17)
+                    text: Welcome to Ask Me about Anything Bot (version 0.0.18)
             print_about:
                 type: text
                 options:

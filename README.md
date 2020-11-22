@@ -1,9 +1,11 @@
 # Ask Me Anything Chatbot
 
 ## Introduction
-The Chatbot has been developed for [Kata.ai](https://kata.ai/platform) chatbot framework.
 It is a chatbot with the "Open Domain Long Form Question and Answering" (ODLFQA) function, in which 
 a user (e.g. a child or a student) can ask anything and the chatbot engine can give a long answer. 
+The first version has been developed for [Kata.ai](https://kata.ai/platform) chatbot framework. 
+Another frameworks (Rasa or DeepPavlov) will be tested.
+
 
 The chatbot's ODLFQA engine gathers relevant information from a variety of sources (e.g. paragraphs from 
 relevant Wikipedia pages), synthesizes the information, and creates an easy-to-read original 
