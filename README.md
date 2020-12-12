@@ -39,7 +39,7 @@ available now:
 It is running on kata.ai server infrastructure which works as the frontend and "hub" between the chat messenger 
 (Telegram in this case) and the Chatbot's ODLFQA Engine
 ### Chatbot's ODLFQA Engine
-The engine has been dockerized and available at https://hub.docker.com/repository/docker/wirawan/eli5.
+The engine has been dockerized and available at https://hub.docker.com/r/wirawan/eli5.
 
 #### Docker Usage
 - Create a directory /eli5/.cache (or another directory where you have access) before you run the docker for the first time,
